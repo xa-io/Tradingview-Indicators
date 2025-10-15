@@ -12,6 +12,7 @@ bool showBitfinexName = input(true, title="Show Bitfinex Label")
 bool showCoinbaseName = input(true, title="Show Coinbase Label")
 int spacingColumns = input.int(2, title="Spacing Columns", minval=0, maxval=10)
 string tablePosition = input.string("Top Right", title="Table Position", options=["Top Left", "Top Center", "Top Right", "Middle Left", "Middle Center", "Middle Right", "Bottom Left", "Bottom Center", "Bottom Right"])
+string text_size_option = input.string("Normal", title="Table Text Size", options=["Tiny", "Small", "Normal", "Large", "Huge"])
 
 // Extract the base currency from the current symbol
 baseCurrency = syminfo.basecurrency
@@ -57,6 +58,9 @@ coinbaseColor = coinbasePremium >= 0 ? color.new(color.green, 80) : color.new(co
 bitfinexText = (bitfinexPremium >= 0 ? "+" : "") + "$" + formatNumber(math.abs(bitfinexPremium))
 coinbaseText = (coinbasePremium >= 0 ? "+" : "") + "$" + formatNumber(math.abs(coinbasePremium))
 
+// Convert text size option to Pine Script size constant
+text_size = text_size_option == "Tiny" ? size.tiny : text_size_option == "Small" ? size.small : text_size_option == "Normal" ? size.normal : text_size_option == "Large" ? size.large : size.huge
+
 // === Table Setup ===
 // Convert string position to Pine Script position constant
 var string pos = tablePosition == "Top Left" ? position.top_left : 
@@ -77,18 +81,18 @@ var table premiumTable = table.new(pos, totalColumns, 2, bgcolor=color.new(#0000
 
 if barstate.islast
     // Row 1: Bitfinex vs Coinbase - premium always shows, name conditional
-    table.cell(premiumTable, 0, 0, showBitfinexName ? "Bitfinex" : "", text_color=color.white, bgcolor=showBitfinexName ? color.new(color.gray, 0) : na, text_size=size.normal)
-    table.cell(premiumTable, 1, 0, bitfinexText, text_color=color.white, bgcolor=bitfinexColor, text_size=size.normal)
+    table.cell(premiumTable, 0, 0, showBitfinexName ? "Bitfinex" : "", text_color=color.white, bgcolor=showBitfinexName ? color.new(color.gray, 0) : na, text_size=text_size)
+    table.cell(premiumTable, 1, 0, bitfinexText, text_color=color.white, bgcolor=bitfinexColor, text_size=text_size)
     
     // Row 2: Coinbase vs Other Exchanges Average - premium always shows, name conditional
-    table.cell(premiumTable, 0, 1, showCoinbaseName ? "Coinbase" : "", text_color=color.white, bgcolor=showCoinbaseName ? color.new(color.gray, 0) : na, text_size=size.normal)
-    table.cell(premiumTable, 1, 1, coinbaseText, text_color=color.white, bgcolor=coinbaseColor, text_size=size.normal)
+    table.cell(premiumTable, 0, 1, showCoinbaseName ? "Coinbase" : "", text_color=color.white, bgcolor=showCoinbaseName ? color.new(color.gray, 0) : na, text_size=text_size)
+    table.cell(premiumTable, 1, 1, coinbaseText, text_color=color.white, bgcolor=coinbaseColor, text_size=text_size)
     
     // Add dynamic spacing columns on the right (only if spacing > 0)
     if spacingColumns > 0
         for i = 0 to spacingColumns - 1
-            table.cell(premiumTable, 2 + i, 0, "          ", text_color=color.white, bgcolor=color.new(#787b86, 100), text_size=size.small)
-            table.cell(premiumTable, 2 + i, 1, "          ", text_color=color.white, bgcolor=color.new(#787b86, 100), text_size=size.small)
+            table.cell(premiumTable, 2 + i, 0, " ", text_color=color.white, bgcolor=color.new(#787b86, 100), text_size=text_size)
+            table.cell(premiumTable, 2 + i, 1, " ", text_color=color.white, bgcolor=color.new(#787b86, 100), text_size=text_size)
 
 // === Alert Conditions ===
 // Bitfinex premium alerts
