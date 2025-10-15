@@ -95,7 +95,7 @@ colorPositive = color.new(color.green, 80)
 colorNegative = color.new(color.red, 80)
 
 // === Table Setup ===
-var table infoTable = table.new(position.top_right, 1, 8, bgcolor=color.new(#000000, 0))  // One column for signal, other rows for MTF data
+var table infoTable = table.new(position.top_right, 1, 9, bgcolor=color.new(#000000, 0))  // One column with 9 rows: 1 for trade signal + 8 for MTF data
 
 if barstate.islast
     // Only add the trade_flag row if the trade signal is enabled
