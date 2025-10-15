@@ -1,3 +1,9 @@
+// ###############################################################################################
+// ## This will pull cross-exchange data for all base currencies for the listed exchanges ########
+// ########## Keep in mind this will only work if the pair is traded on all exchanges. ###########
+// ######## This script will fail, if a single exchange doesn't trade the looked up pair #########
+// ###############################################################################################
+
 //@version=5
 indicator("Premiums Monitor", shorttitle="Premiums", overlay=true)
 
