@@ -1,5 +1,6 @@
-//@version=5
-indicator("Binance USDT Arb", shorttitle="ECI - Binance Arb", overlay=true)
+//@version=5 
+// Exchange Comparison Indicator - Candles
+indicator("ECI - Binance USDT Arb v3", shorttitle="ECI - Binance Arb v3", overlay=true)
 
 // Extract the base currency from the current symbol
 baseCurrency = syminfo.basecurrency
@@ -41,11 +42,14 @@ percentDifference = (priceDifference / binanceClose) * 100
 
 var label priceDiffLabel = na
 if na(priceDiffLabel)
-    priceDiffLabel := label.new(bar_index, high, text="", color=color.white, style=label.style_label_down, size=size.small)
+    priceDiffLabel := label.new(x=bar_index, y=binanceClose, text="", color=color.white, style=label.style_label_left, size=size.small, xloc=xloc.bar_index, yloc=yloc.price)
+
 decPlaces = decimals()
-labelText = formatNumber(priceDifference, decPlaces) + " (" + formatNumber(percentDifference, 2) + "%)"
+labelText = "" + formatNumber(percentDifference, 2) + "%"
+
+// Adjust label position to be to the right of the current candle
+label.set_xy(priceDiffLabel, bar_index + 1, binanceClose) // Shift the label to the right by one bar
 label.set_text(priceDiffLabel, labelText)
-label.set_xy(priceDiffLabel, bar_index, high)
 
 // Create a dynamic horizontal line for the current price
 var line currentPriceLine = na
@@ -54,3 +58,24 @@ if na(currentPriceLine)
 else
     line.set_y1(currentPriceLine, binanceClose)
     line.set_y2(currentPriceLine, binanceClose)
+
+// Create horizontal lines for the highest high and lowest low of the visible range
+var line highLine = na
+var line lowLine = na
+
+visibleBars = input.int(30, title="Number of Bars for Visible Range")
+
+visibleHigh = ta.highest(binanceHigh, visibleBars)
+visibleLow = ta.lowest(binanceLow, visibleBars)
+
+if na(highLine)
+    highLine := line.new(x1=na, y1=visibleHigh, x2=na, y2=visibleHigh, width=1, color=#91919140, extend=extend.both)
+else
+    line.set_y1(highLine, visibleHigh)
+    line.set_y2(highLine, visibleHigh)
+
+if na(lowLine)
+    lowLine := line.new(x1=na, y1=visibleLow, x2=na, y2=visibleLow, width=1, color=#91919140, extend=extend.both)
+else
+    line.set_y1(lowLine, visibleLow)
+    line.set_y2(lowLine, visibleLow)
