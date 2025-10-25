@@ -18,8 +18,7 @@ Created by: [https://github.com/xa-io](https://github.com/xa-io)
   - [Premiums](#premiums)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Support](#Support)
 
 ---
 
