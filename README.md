@@ -10,6 +10,7 @@ Created by: [https://github.com/xa-io](https://github.com/xa-io)
 
 - [Overview](#overview)
 - [Indicators](#indicators)
+  - [24hr Volume Monitor](#24hr-volume-monitor)
   - [Binance Arb](#binance-arb)
   - [Candle Percentage Range](#candle-percentage-range)
   - [Cross Exchange Candles and Volume](#cross-exchange-candles-and-volume)
@@ -18,7 +19,7 @@ Created by: [https://github.com/xa-io](https://github.com/xa-io)
   - [Premiums](#premiums)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Support](#Support)
+- [Support](#support)
 
 ---
 
@@ -27,6 +28,7 @@ Created by: [https://github.com/xa-io](https://github.com/xa-io)
 This repository contains a suite of custom TradingView indicators designed for traders who monitor multiple exchanges, analyze cross-exchange arbitrage opportunities, and track price movements across different timeframes and venues.
 
 **Key Features:**
+- 24-hour volume monitoring with customizable thresholds
 - Multi-exchange price comparison
 - Real-time arbitrage detection
 - Cross-exchange volume analysis
@@ -36,6 +38,33 @@ This repository contains a suite of custom TradingView indicators designed for t
 ---
 
 ## Indicators
+
+### 24hr Volume Monitor
+
+**Description:**
+Displays the current trading pair's 24-hour volume in USD with real-time color-coded alerts based on customizable volume thresholds.
+
+**Features:**
+- Real-time 24-hour volume calculation in USD
+- Color-coded table display (green above threshold, red below)
+- Smart volume formatting with K/M/B suffixes
+- Configurable minimum volume threshold
+- Alert system for volume threshold crossovers
+- Fully customizable table position and text size
+
+**Example:**
+
+![24hr Volume Monitor Example](https://github.com/xa-io/Tradingview-Indicators/blob/main/images/24hr%20Volume.png?raw=true)
+
+*Screenshot showing 24hr volume display with color-coded indicator*
+
+**Configuration:**
+- Table Position: Choose from 9 placement options (default: Bottom Left)
+- Table Text Size: Select from Tiny, Small, Normal, Large, or Huge
+- Minimum Volume Threshold: Set volume level for color coding (default: $500,000)
+- Spacing Columns: Adjust table spacing for better visibility (0-10 columns)
+
+---
 
 ### Binance Arb
 
@@ -251,6 +280,7 @@ For questions, issues, or feature requests:
 
 ### Latest Updates
 
+- Added 24hr Volume Monitor with customizable threshold alerts
 - Added comprehensive multi-exchange monitoring capabilities
 - Enhanced arbitrage detection algorithms
 - Improved cross-exchange volume analysis
@@ -269,5 +299,3 @@ These indicators are provided for educational and informational purposes only. T
 - Always verify signals with multiple sources
 
 ---
-
-**⭐ If you find these indicators helpful, please consider starring the repository!**
