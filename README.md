@@ -10,7 +10,7 @@ Created by: [https://github.com/xa-io](https://github.com/xa-io)
 
 - [Overview](#overview)
 - [Indicators](#indicators)
-  - [24hr Volume Monitor](#24hr-volume-monitor)
+  - [Multi-Timeframe Volume Monitor](#multi-timeframe-volume-monitor)
   - [Binance Arb](#binance-arb)
   - [Candle Percentage Range](#candle-percentage-range)
   - [Cross Exchange Candles and Volume](#cross-exchange-candles-and-volume)
@@ -28,7 +28,7 @@ Created by: [https://github.com/xa-io](https://github.com/xa-io)
 This repository contains a suite of custom TradingView indicators designed for traders who monitor multiple exchanges, analyze cross-exchange arbitrage opportunities, and track price movements across different timeframes and venues.
 
 **Key Features:**
-- 24-hour volume monitoring with customizable thresholds
+- Multi-timeframe volume monitoring (15m, 1hr, 4hr, 24hr) with customizable thresholds
 - Multi-exchange price comparison
 - Real-time arbitrage detection
 - Cross-exchange volume analysis
@@ -39,30 +39,30 @@ This repository contains a suite of custom TradingView indicators designed for t
 
 ## Indicators
 
-### 24hr Volume Monitor
+### Multi-Timeframe Volume Monitor
 
 **Description:**
-Displays the current trading pair's 24-hour volume in USD with real-time color-coded alerts based on customizable volume thresholds.
+Displays volume across multiple timeframes (15m, 1hr, 4hr, 24hr) in a single customizable table with real-time color-coded alerts based on volume thresholds.
 
 **Features:**
-- Real-time 24-hour volume calculation in USD
-- Color-coded table display (green above threshold, red below)
+- Multi-timeframe analysis with selective display toggles
+- Individual or aggregate coloring modes
 - Smart volume formatting with K/M/B suffixes
-- Configurable minimum volume threshold
+- Fully customizable colors and transparency
 - Alert system for volume threshold crossovers
-- Fully customizable table position and text size
+- Flexible table positioning and text sizing
 
 **Example:**
 
 ![24hr Volume Monitor Example](https://github.com/xa-io/Tradingview-Indicators/blob/main/images/24hr%20Volume.png?raw=true)
 
-*Screenshot showing 24hr volume display with color-coded indicator*
+*Screenshot showing multi-timeframe volume display with color-coded indicators*
 
 **Configuration:**
-- Table Position: Choose from 9 placement options (default: Bottom Left)
-- Table Text Size: Select from Tiny, Small, Normal, Large, or Huge
-- Minimum Volume Threshold: Set volume level for color coding (default: $500,000)
-- Spacing Columns: Adjust table spacing for better visibility (0-10 columns)
+- Timeframes: Toggle individual 15m, 1hr, 4hr, 24hr displays
+- Threshold: Set minimum volume for color coding
+- Coloring: Individual per-timeframe or aggregate mode
+- Styling: Customize colors, transparency, position, and text size
 
 ---
 
@@ -280,7 +280,10 @@ For questions, issues, or feature requests:
 
 ### Latest Updates
 
-- Added 24hr Volume Monitor with customizable threshold alerts
+- **Multi-Timeframe Volume Monitor:** Upgraded from single 24hr display to support 15m, 1hr, 4hr, and 24hr timeframes
+- **Aggregate Coloring Mode:** Added option to color entire table based on average volume across enabled timeframes
+- **Full Color Customization:** Added customizable colors for above/below threshold, backgrounds, and spacing
+- **Selective Timeframe Display:** Individual toggles for each timeframe
 - Added comprehensive multi-exchange monitoring capabilities
 - Enhanced arbitrage detection algorithms
 - Improved cross-exchange volume analysis
